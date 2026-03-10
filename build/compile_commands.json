@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/ProgramLab3/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -g -o CMakeFiles\\ProgramLab3.dir\\main.cpp.obj -c C:\\ProgramLab3\\main.cpp",
+  "file": "C:/ProgramLab3/main.cpp",
+  "output": "C:/ProgramLab3/build/CMakeFiles/ProgramLab3.dir/main.cpp.obj"
+}
+]
