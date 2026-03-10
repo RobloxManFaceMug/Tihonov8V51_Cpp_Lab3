@@ -1,0 +1,17 @@
+#include <string>
+
+bool IsPalindrome(std::string s) {
+    for (int i = 0; i < s.length(); i++) {
+        if (s[i] == ' '){
+            s.erase(i,1);
+            i--;
+        }
+    }
+
+    for (int i = 0, j = s.length()-1; i < j; i++, j--) {
+        if (s[i] != s[j]) {
+            return false;
+        }
+    }
+    return true;
+}

@@ -1,0 +1,14 @@
+#include <vector>
+#include <string>
+
+bool IsAcronym(std::string s, std::vector<std::string> words) {
+    if (s.length() != words.size()) {
+        return false;
+    }
+    for (int i = 0; i < s.length(); i++) {
+        if (s[i] != words[i][0]) {
+            return false;
+        }
+    }
+    return true;
+}
