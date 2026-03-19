@@ -1,0 +1,47 @@
+#include <vector>
+#include <string>
+#include <algorithm>
+
+int EvilScrabbleScore(std::vector<std::string> words, std::vector<char> letters, std::vector<int> score) {
+    int ScoreTotal = 0;
+    int ScoreNow;
+    bool IsPossible = true;
+    std::vector<char> alphabeth = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+
+    std::vector<int> ZeroScore(26, 0);
+    for (int i = 0; i < letters.size(); i++)      //score alphabetical order
+    {   
+        auto mogus = std::find(alphabeth.begin(), alphabeth.end(), letters.at(i));
+        ZeroScore.at(mogus - alphabeth.begin()) = score.at(mogus - alphabeth.begin());
+    }
+
+    int AlgorithmWhy;
+    int WordLength;
+    for (int i = 0; i < words.size(); i++)      //words
+    {   
+        ScoreNow = 0;
+        std::vector<char> lettersCopy = letters;
+        lettersCopy.push_back('0');
+        WordLength = words[i].size();
+        
+        for (int j = 0, l = 0; l < WordLength; j++)        //letters
+        {   
+            auto mobile = std::find(lettersCopy.begin(), lettersCopy.end(), words[i][l]);
+            if (mobile != lettersCopy.end())
+            {   
+                AlgorithmWhy = words[i][l] - 'a';
+                ScoreNow += ZeroScore.at(AlgorithmWhy);
+                lettersCopy.erase(mobile);
+                j--;
+            }
+            else 
+            {   
+                ScoreNow = 0;
+                break;
+            }
+            l++;
+        }
+        ScoreTotal = std::max(ScoreNow, ScoreTotal);
+    }
+    return ScoreTotal;
+}
